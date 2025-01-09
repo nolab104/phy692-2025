@@ -7,7 +7,7 @@ class heaterExperiment:
     def __init__(self, tempTarget = 50.0, rate=1.0, tempInit = 20.0, timeOut = 60.0):  
         self.rate = rate # degree Celsius per second
         self.tempStart = tempInit # initial temperature deg. C.
-        self.timeStart = 0 # time in seconds
+        self.timeStart = 0.0 # time in seconds
         self.timeStop = timeOut
         self.noiseSigma = 0.5
         self.tempTarget = tempTarget
@@ -26,7 +26,7 @@ class heaterExperiment:
         self.timeStop = time.time()
 
     def getCurrentTemperature(self):
-        timeElapsed = time.time - self.timeStart
-        tempCurrent = np.max([self.tempStart + self.rate*np.min(timeElapsed, self.timeStop), self.tempTarget]) + self.rng.normal(0.0, self.noiseSigma)
+        timeElapsed = time.time() - self.timeStart
+        tempCurrent = np.min([self.tempStart + self.rate*np.min([timeElapsed, self.timeStop]), self.tempTarget]) + self.rng.normal(0.0, self.noiseSigma)
         return tempCurrent
 
