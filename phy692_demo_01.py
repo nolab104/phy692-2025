@@ -23,10 +23,10 @@ elapsed = np.zeros(N)
 
 for i in range(20):
     # time.sleep(1.0) 
-    while time.time() < (elapsed[i]+1)
-    elapsed[i] = time.time() - t
-    tempCurrent[i] = h.getCurrentTemperature()
-    print("{:.3f} {:.1f}".format(elapsed[i], tempCurrent[i]))
+    while time.time() < (elapsed[i]+1):
+        elapsed[i] = time.time() - t
+        tempCurrent[i] = h.getCurrentTemperature()
+        print("{:.3f} {:.1f}".format(elapsed[i], tempCurrent[i]))
 
 h.stop_heating()
 
